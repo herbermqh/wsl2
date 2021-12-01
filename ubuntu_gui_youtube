@@ -25,7 +25,8 @@ sudo nano /etc/xrdp/startwm.sh
 
 !add these lines:
 # xfce
-startxfce4
+# startxfce4
+exec dwm
 
 sudo /etc/init.d/xrdp start
 
