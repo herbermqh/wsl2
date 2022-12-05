@@ -1,3 +1,42 @@
+1. install wsl
+2. Programas a instalar
+  base-devel
+  xrdp  de https://aur.archlinux.org/xrdp.git
+3. Install dwm
+4. Configuración de xrdp
+  sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
+  sudo sed -i 's/3389/3390/g' /etc/xrdp/xrdp.ini
+  sudo sed -i 's/max_bpp=32/#max_bpp=32\nmax_bpp=128/g' /etc/xrdp/xrdp.ini
+  sudo sed -i 's/xserverbpp=24/#xserverbpp=24\nxserverbpp=128/g' /etc/xrdp/xrdp.ini
+  sudo nvim /etc/xrdp/startwm.sh
+    pre_start
+    . ~/.xinitrc 
+    past_start
+5. configuración .xinitrc
+  exec dwm
+6. Inicializar servidor xrdp
+  sudo pacman -Syuu
+  sudo pacman -S python2
+    yay -s python2 -----opcion 14
+  sudo mv /usr/bin/systemctl /usr/bin/systemctl.old
+  ---copiar codígo de https://github.com/fitrh/dwm/blob/main/config.def.h al archivo /usr/bin/systemctl
+  sudo curl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py -o /usr/bin/systemctl
+  sudo chown root /usr/bin/systemctl
+  sudo chgrp root /usr/bin/systemctl
+  sudo chmod +x /usr/bin/systemctl
+  sudo systemctl enable xrdp.service
+  sudo systemctl enable xrdp-sesman.service
+  sudo start xrdp.service
+  sudo start xrdp-sesman.service
+7. Conexión a remote desktop
+  localhost:3390
+  
+  
+
+
+
+
+
 !YouTube video: https://youtu.be/IL7Jd9rjgrM
 
 !WSL commands:
