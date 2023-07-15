@@ -26,8 +26,8 @@
   sudo chmod +x /usr/bin/systemctl
   sudo systemctl enable xrdp.service
   sudo systemctl enable xrdp-sesman.service
-  sudo start xrdp.service
-  sudo start xrdp-sesman.service
+  sudo systemctl start xrdp.service
+  sudo systemctl start xrdp-sesman.service
 7. Conexión a remote desktop
   localhost:3390
   
